@@ -6,7 +6,19 @@
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { noop } from './utils';
+
+const propTypes = {
+  visible: PropTypes.bool,
+  onClose: PropTypes.func,
+};
+
+const defaultProps = {
+  visible: false,
+  onClose: noop,
+};
 
 const BackdropStyled = styled.div`
   display: block;
@@ -66,7 +78,8 @@ const ContentStyled = styled.div`
   max-height: calc(100vh - 8px * 2);
   border-radius: 2px;
   animation: esUIVk 300ms ease-in;
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1), 0px 4.5px 9px 0.75px rgba(0,0,0,0.1), 0px 5px 10px 1px rgba(0,0,0,0.1);
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1), 0px 4.5px 9px 0.75px
+    rgba(0,0,0,0.1), 0px 5px 10px 1px rgba(0,0,0,0.1);
 }
 `;
 
@@ -123,5 +136,9 @@ class Modal extends Component {
     return ReactDOM.createPortal(content, this.el);
   }
 }
+
+Modal.propTypes = propTypes;
+Modal.defaultProps = defaultProps;
+Modal.displayName = 'Modal';
 
 export default Modal;
