@@ -1,8 +1,12 @@
 {
   "name": "react-bullet-holes",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "start": "webpack-dev-server --config ./examples/webpack.config.js",
     "lint": "run-s lint:js lint:style",
@@ -16,7 +20,8 @@
   },
   "keywords": [
     "react",
-    "error-boundaries"
+    "tools",
+    "error-boundary"
   ],
   "author": "Dmitry Malakhov <dmitrii.malakhov@gmail.com>",
   "license": "MIT",

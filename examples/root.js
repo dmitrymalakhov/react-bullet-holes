@@ -9,7 +9,6 @@ import styled from 'styled-components';
 import ErrorBoundary from '../src';
 import Card from './components/Card';
 
-
 const RootStyled = styled.div`
   display: flex;
   align-items: center;
