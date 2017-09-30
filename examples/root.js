@@ -6,6 +6,7 @@
 
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+import ErrorBoundary from '../src';
 import Card from './components/Card';
 
 
@@ -46,31 +47,66 @@ const ButtonStyled = styled.button`
   transition-delay: 0ms;
 `;
 
+const ButtonBoxStyled = styled.div`
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ColumnStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 class Root extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      error: false,
+      errorLeft: false,
+      errorRight: false,
     };
 
-    this._handleClick = this._handleClick.bind(this);
+    this._handleClickLeft = this._handleClickLeft.bind(this);
+    this._handleClickRight = this._handleClickRight.bind(this);
   }
 
-  _handleClick() {
+  _handleClickLeft() {
     this.setState({
-      error: true,
+      errorLeft: true,
+    });
+  }
+
+  _handleClickRight() {
+    this.setState({
+      errorRight: true,
     });
   }
 
   render() {
     return (
       <RootStyled>
-        <Card error={this.state.error} />
-        <ButtonStyled onClick={this._handleClick}>
-          CRASH
-        </ButtonStyled>
-        <Card />
+        <ColumnStyled>
+          <ErrorBoundary>
+            <Card image="https://goo.gl/mBixRw" error={this.state.errorLeft} />
+          </ErrorBoundary>
+          <ButtonBoxStyled>
+            <ButtonStyled onClick={this._handleClickLeft}>
+              CRASH
+            </ButtonStyled>
+          </ButtonBoxStyled>
+        </ColumnStyled>
+        <ColumnStyled>
+          <ErrorBoundary>
+            <Card image="https://goo.gl/y6eS4V" error={this.state.errorRight} />
+          </ErrorBoundary>
+          <ButtonBoxStyled>
+            <ButtonStyled onClick={this._handleClickRight}>
+              CRASH
+            </ButtonStyled>
+          </ButtonBoxStyled>
+        </ColumnStyled>
       </RootStyled>
     );
   }
