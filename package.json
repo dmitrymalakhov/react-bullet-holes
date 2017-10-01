@@ -1,6 +1,6 @@
 {
   "name": "react-bullet-holes",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -58,7 +58,6 @@
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "rebass": "^1.0.4",
     "styled-components": "^2.1.2"
   }
 }
