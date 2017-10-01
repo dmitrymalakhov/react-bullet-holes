@@ -1,6 +1,6 @@
 # react-bullet-holes
 
-Awesome ErrorBoundary. Show errors of React components where they occurred.
+Awesome ErrorBoundary. Show errors of React components where they occurred. Based on componentDidCatch from React 16.
 
 ![react-bullet-holes](docs/demo.gif)
 
