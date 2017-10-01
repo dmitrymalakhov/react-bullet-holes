@@ -32,7 +32,6 @@ const CardImgStyled = styled.img`
   width: 100%;
 `;
 
-/* eslint-disable max-len */
 class Card extends PureComponent {
   render() {
     if (this.props.error)
