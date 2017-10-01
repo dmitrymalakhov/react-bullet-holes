@@ -35,3 +35,9 @@ render() {
 }
 
 ```
+
+## Documentation - props
+
+#### onError: func(error: { message: string, stack: string }, info: { componentStack: string })
+
+This callback is called when throwing error in wrapped component.
