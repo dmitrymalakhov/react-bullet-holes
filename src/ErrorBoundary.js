@@ -87,7 +87,7 @@ class ErrorBoundary extends Component {
       componentStack,
     });
 
-    this.props.onError();
+    this.props.onError(error, { componentStack });
   }
 
   _handleOpenModal() {
@@ -115,7 +115,7 @@ class ErrorBoundary extends Component {
               this.state.componentStack
                 .split(/(?: \r\n|\r|\n)/g)
                 .filter(item => item !== '')
-                .map(item => <li key={item}>{item}</li>)
+                .map((item, idx) => <li key={idx}>{item}</li>)
             }
           </TraceListStyled>
         </div>

@@ -5,7 +5,17 @@
 'use strict';
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ErrorBoundary from './ErrorBoundary';
+import { noop } from './utils';
+
+const propTypes = {
+  onError: PropTypes.func,
+};
+
+const defaultProps = {
+  onError: noop,
+};
 
 class ErrorBoundaryWrapper extends Component {
   constructor(props) {
@@ -35,10 +45,12 @@ class ErrorBoundaryWrapper extends Component {
       this._boundingClientRect = this._domNode.getBoundingClientRect();
   }
 
-  _handleError() {
+  _handleError(error, { componentStack }) {
     this.setState({
       hasError: true,
     });
+
+    this.props.onError(error, { componentStack });
   }
 
   _saveRef(ref) {
@@ -60,5 +72,9 @@ class ErrorBoundaryWrapper extends Component {
     );
   }
 }
+
+ErrorBoundaryWrapper.propTypes = propTypes;
+ErrorBoundaryWrapper.defaultProps = defaultProps;
+ErrorBoundaryWrapper.displayName = 'ErrorBoundaryWrapper';
 
 export default ErrorBoundaryWrapper;
